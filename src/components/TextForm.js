@@ -67,8 +67,10 @@ export default function TextForm(props) {
   return (
     <>
         <div className = "container"  style = {{color : props.mode === 'light' ? 'black' : 'white'}}>
-            <div className="mb-3">
-                <h3>{props.heading} </h3>
+            <div >
+                <h3 className="mb-3" style={{ marginTop: '40px', padding: '10px', textAlign: 'center' }}>
+                  {props.heading}
+                </h3>
                 <label htmlFor="exampleFormControlTextarea1" className="form-label">
                 </label>
                 <textarea
@@ -80,13 +82,13 @@ export default function TextForm(props) {
                 onChange = {handleOnChange}
                 defaultValue={""}
                 />
-                <button className='btn btn-primary my-3 me-2' onClick={handleUpClick}>
+                <button className='btn btn-primary my-3 mx-2' disabled = {text.length === 0} onClick={handleUpClick}>
                     Convert To UpperCase
                 </button>
-                <button className='btn btn-primary my-3 me-2' onClick={ handleLowClick }>
+                <button className='btn btn-primary my-3 mx-2'  disabled = {text.length === 0}onClick={ handleLowClick }>
                     Convert To LowerCase
                 </button>
-                <button className='btn btn-primary my-3 ' onClick={ handleClear}>
+                <button className='btn btn-primary my-3 mx-2'  disabled = {text.length === 0}onClick={ handleClear}>
                     Clear Text
                 </button>
             </div>
@@ -101,7 +103,7 @@ export default function TextForm(props) {
                 onChange = {handleOnChangeSearch}
                 defaultValue={""}
             />
-            <button className='btn btn-primary my-3 ' onClick={ searchFor }>
+            <button className='btn btn-primary my-3 '  disabled = {text.length === 0 || text1.length === 0}onClick={ searchFor }>
                     Search
              </button>
              <div>
@@ -111,7 +113,7 @@ export default function TextForm(props) {
         <div className = "container" style = {{color : props.mode === 'light' ? 'black' : 'white'}}>
             <h3>Text Summary</h3>
             <p>{numberOfWords(text)} words and {text.length} characters</p>
-            <p>{0.008 * text.split(" ").length} minutes to read</p>
+            <p>{0.008 * numberOfWords(text)} minutes to read</p>
         </div>
         <div className = "container" style = {{color : props.mode === 'light' ? 'black' : 'white'}}>
           <h4>Preview</h4>

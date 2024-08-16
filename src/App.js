@@ -31,13 +31,13 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark Mode is set", "success");
-      document.title = 'Textty Dark Mode';
+      // document.title = 'Textty Dark Mode';
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light Mode is set", "success");
-      document.title = 'Textty Light Mode';
+      // document.title = 'Textty Light Mode';
     }
   }
 
@@ -49,7 +49,7 @@ function App() {
         <div className='container my-3'>
           <Routes>
             <Route exact path = '/about' element = {<About mode = {mode}/>}></Route>
-            <Route exact path= '/' element={<TextForm heading="Enter the text to analyze" mode={mode} showAlert={showAlert}/>}/>
+            <Route exact path= '/' element={<TextForm heading="Try TextConverter" mode={mode} showAlert={showAlert}/>}/>
           </Routes>
         </div>
       </Router>
