@@ -2,35 +2,11 @@ import React, {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-export default function About() {
-    const [myStyle, setMyStyle] = useState({
-        color :'white',
-        backgroundColor :'black'
-    })
-    const [btntext, setbtntext] = useState("Enable Dark Mode");
-
-    const toggleStyle = () => {
-        if(myStyle.color == 'white'){
-            setMyStyle({
-                color : 'black',
-            backgroundColor : 'white'
-            })
-            setbtntext("Enable dark mode");
-        }
-        else{
-            setMyStyle({
-                color :'white',
-                backgroundColor :'black'
-            })
-            setbtntext("Enable light mode");
-        }
-    }
-    
+export default function About(props) {
   return (
-    <div className = "container" style = {myStyle}>
-        <h1>About Us</h1>
-        <div className="accordion" id="accordionExample">
-        {/* myStyle is an object */}
+    <div className = "container" >
+        <h1 style={{color : props.mode === 'light' ? 'black' : 'white'}}>About Us</h1>
+        <div className="accordion" id="accordionExample" style={{ backgroundColor: props.mode === 'light' ? '#212AA5' : 'white' }}>
       <div className="accordion-item">
         <h2 className="accordion-header">
           <button
@@ -41,7 +17,7 @@ export default function About() {
             aria-expanded="true"
             aria-controls="collapseOne"
           >
-            Accordion Item #1
+            Features
           </button>
         </h2>
         <div
@@ -50,7 +26,14 @@ export default function About() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element.
+            <ul>
+              <li>Lower Case</li>
+              <li>Upper Case</li>
+              <li>Clear</li>
+              <li>Seach</li>
+              <li>Preview</li>
+              <li>Light and Dark</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -64,7 +47,7 @@ export default function About() {
             aria-expanded="false"
             aria-controls="collapseTwo"
           >
-            Accordion Item #2
+            Overview
           </button>
         </h2>
         <div
@@ -73,7 +56,7 @@ export default function About() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes.
+            Flexible app which can be used to format our text
           </div>
         </div>
       </div>
@@ -87,7 +70,7 @@ export default function About() {
             aria-expanded="false"
             aria-controls="collapseThree"
           >
-            Accordion Item #3
+            Motto
           </button>
         </h2>
         <div
@@ -96,12 +79,9 @@ export default function About() {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes.
+            To learn react
           </div>
         </div>
-      </div>
-      <div className='container my-3'>
-      <button className = "btn btn-primary " onClick={toggleStyle}>{btntext}</button>
       </div>
     </div>
     </div>
